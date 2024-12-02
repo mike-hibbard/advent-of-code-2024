@@ -129,9 +129,15 @@ def Is_Safe(report):
     return is_safe
 
 # Test Is_Safe
-print(Is_Safe(sorted_reports[0]))
-print(Is_Safe(sorted_reports[2]))
-
+#print(Is_Safe(sorted_reports[0]))
+#print(Is_Safe(sorted_reports[2]))
 
 
 # Count instances of lists that are True.
+number_of_safe_reports = 0
+
+for report in sorted_reports:
+    if Is_Safe(report):
+        number_of_safe_reports +=1
+
+print(f"Number of safe reports: {number_of_safe_reports}")

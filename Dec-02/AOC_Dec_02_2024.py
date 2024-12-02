@@ -170,15 +170,15 @@ def Problem_Dampener(report):
 
     for i in range(0,len(report)):
         temp_report = report[:i] + report[i+1:]  # Builds a list by removing ith item
-        if Is_Safe(temp_report):
+        if Is_Safe(temp_report) and Is_Sorted(report):
             is_safe = True
         print(temp_report, is_safe)
     
     return is_safe
 
 # Test
-print(Problem_Dampener([1,3,2,4,5]))  # True
-print(Problem_Dampener([8,6,4,4,1]))  # True
+#print(Problem_Dampener([1,3,2,4,5]))  # True
+#print(Problem_Dampener([8,6,4,4,1]))  # True
 
 
 safe_reports = []
@@ -186,24 +186,25 @@ unsafe_reports = []
 
 
 # First get all the safe, sorted reports
-#print(sorted_reports)
-#print(unsorted_reports)
-
-# Get all unsafe reports
-
-
-for report in reports:  # Use original list, then need to sort both safe and unsafe lists after
+for report in sorted_reports:  # Use original list, then need to sort both safe and unsafe lists after
     if Is_Safe(report):
         safe_reports.append(report)
     
     else:
         unsafe_reports.append(report)
 
+# Next get all the unsorted reports - run through Problem Dampener, remove from unsorted, add to safe_reports
+for report in unsorted_reports:
+    if Problem_Dampener(report):
+        safe_reports.append(report)
+
+
+
 print("\nPART 2 ANSWER")
 print("--------------")
 print(f"Number of reports: {len(reports)}")
 print(f"Number of safe reports: {len(safe_reports)}")
-print(f"unsafe reports: {safe_reports}")
+print(f"safe reports: {safe_reports}")
 print(f"Number of unsafe reports: {len(unsafe_reports)}")
 print(f"unsafe reports: {unsafe_reports}")
 print("--------------")

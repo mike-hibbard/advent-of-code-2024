@@ -91,11 +91,15 @@ def Is_Sorted(report):
 # print(Is_Sorted(reports[3]))
 
 sorted_reports = []
+unsorted_reports = []
 
 # Filter out anything that is not sorted asc or desc
 for report in reports:
     if Is_Sorted(report):
         sorted_reports.append(report)
+
+    else:
+        unsorted_reports.append(report)
         
 # Test Filtering
 print(sorted_reports)
@@ -176,8 +180,17 @@ def Problem_Dampener(report):
 print(Problem_Dampener([1,3,2,4,5]))  # True
 print(Problem_Dampener([8,6,4,4,1]))  # True
 
+
 safe_reports = []
 unsafe_reports = []
+
+
+# First get all the safe, sorted reports
+#print(sorted_reports)
+#print(unsorted_reports)
+
+# Get all unsafe reports
+
 
 for report in reports:  # Use original list, then need to sort both safe and unsafe lists after
     if Is_Safe(report):

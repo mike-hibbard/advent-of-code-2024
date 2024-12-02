@@ -79,9 +79,17 @@ print(reports)
 # Implement a function to determine if a line is sorted.
 def Is_Sorted(report):
     """Returns true if a report is either in asc or desc order"""
-
-    if report == sorted(report):
+    sorted_report = sorted(report)
+    if report == sorted(report) or report == sorted(report, reverse=True):
         return True
+    
+    else:
+        return False
+
+# Test Is_Sorted
+print(reports[3])
+print(Is_Sorted(reports[3]))
+
 
 """for report in reports:
     if not Is_Sorted(report):

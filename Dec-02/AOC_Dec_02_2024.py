@@ -49,11 +49,50 @@ from pathlib import Path
 
 """PART 1"""
 
+test_data = """7 6 4 2 1
+1 2 7 8 9
+9 7 6 2 1
+1 3 2 4 5
+8 6 4 4 1
+1 3 6 7 9
+"""
+
 # Read and extract input data
 path = Path('input.txt')
 
 # Parse into a list of lines
-lines = path.read_text().splitlines()
+# lines = path.read_text().splitlines()
+lines = test_data.splitlines()
+
+# Convert to lists of lints
+reports = []
+
+for line in lines:
+    chars = line.split()
+    report = list(map(int, chars))
+    reports.append(report)
 
 # Test - print first line
-print(lines[0])
+print(reports)
+
+
+# Implement a function to determine if a line is sorted.
+def Is_Sorted(report):
+    """Returns true if a report is either in asc or desc order"""
+
+    if report == sorted(report):
+        return True
+
+"""for report in reports:
+    if not Is_Sorted(report):
+        print(f"{report} is sorted asc")
+        reports.pop(report)"""
+        
+print(reports)
+
+# Filter out anything that is not sorted asc or desc
+
+
+# Implement a boolean function to test if all numbers are > 0 and <= 3 apart
+
+# Count instances of lists that are True.

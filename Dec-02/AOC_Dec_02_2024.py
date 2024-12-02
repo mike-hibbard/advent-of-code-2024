@@ -58,7 +58,7 @@ test_data = """7 6 4 2 1
 """
 
 # Read and extract input data
-path = Path('Dec-02/input.txt')
+path = Path('input.txt')
 
 # Parse into a list of lines
 lines = path.read_text().splitlines()
@@ -133,6 +133,9 @@ def Is_Safe(report):
 #print(Is_Safe(sorted_reports[2]))
 
 
+"""
+PART 1 ANSWER
+"""
 # Count instances of lists that are True.
 number_of_safe_reports = 0
 
@@ -140,6 +143,21 @@ for report in sorted_reports:
     if Is_Safe(report):
         number_of_safe_reports +=1
 
-print(f"\nLength of reports list: {len(reports)}")
-print(f"\nLength of sorted reports list: {len(sorted_reports)}")
-print(f"\nNumber of safe reports: {number_of_safe_reports}")
+print("\nPART 1 ANSWER")
+print("--------------")
+print(f"Length of reports list: {len(reports)}")
+print(f"Length of sorted reports list: {len(sorted_reports)}")
+print(f"Number of safe reports: {number_of_safe_reports}")
+print("--------------")
+
+
+"""
+PART 2 ANSWER
+"""
+# Count instances of lists that are True.
+number_of_safe_reports = 0
+
+for report in sorted_reports:
+    if Is_Safe(report):
+        number_of_safe_reports +=1
+

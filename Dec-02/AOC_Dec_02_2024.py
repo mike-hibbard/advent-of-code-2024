@@ -87,18 +87,19 @@ def Is_Sorted(report):
         return False
 
 # Test Is_Sorted
-print(reports[3])
-print(Is_Sorted(reports[3]))
+# print(reports[3])
+# print(Is_Sorted(reports[3]))
 
-
-"""for report in reports:
-    if not Is_Sorted(report):
-        print(f"{report} is sorted asc")
-        reports.pop(report)"""
-        
-print(reports)
+sorted_reports = []
 
 # Filter out anything that is not sorted asc or desc
+for report in reports:
+    if Is_Sorted(report):
+        sorted_reports.append(report)
+        
+# Test Filtering
+print(sorted_reports)
+
 
 
 # Implement a boolean function to test if all numbers are > 0 and <= 3 apart

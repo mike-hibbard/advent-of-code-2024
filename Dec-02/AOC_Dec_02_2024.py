@@ -101,7 +101,37 @@ for report in reports:
 print(sorted_reports)
 
 
-
 # Implement a boolean function to test if all numbers are > 0 and <= 3 apart
+
+def abs(a, b):
+    """Absolute function"""
+    diff = a - b
+
+    if diff < 0:
+        diff = diff * -1
+
+    return diff
+
+
+def Is_Safe(report):
+    """Returns true if report numbers are > 0 and <= 3 digits apart"""
+
+    # Default to True
+    is_safe = True
+
+    # Check 'gaps', hence one less than len
+    for i in range(0,len(report)-1):
+        diff = abs(report[i], report[i+1])
+
+        if diff > 3:
+            is_safe = False
+    
+    return is_safe
+
+# Test Is_Safe
+print(Is_Safe(sorted_reports[0]))
+print(Is_Safe(sorted_reports[2]))
+
+
 
 # Count instances of lists that are True.

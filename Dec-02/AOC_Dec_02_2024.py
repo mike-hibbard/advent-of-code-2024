@@ -61,8 +61,8 @@ test_data = """7 6 4 2 1
 path = Path('input.txt')
 
 # Parse into a list of lines
-lines = path.read_text().splitlines()
-# lines = test_data.splitlines()
+# lines = path.read_text().splitlines()
+lines = test_data.splitlines()
 
 # Convert to lists of lints
 reports = []
@@ -154,11 +154,32 @@ print("--------------")
 """
 PART 2 ANSWER
 """
-# Split out safe reports and unsafe reports
+# Implement Is_Safe with Problem Dampener Feature
+# Split out ORIGINAL reports into safe reports and unsafe reports
+# Apply sorting test afterwards
+
+def Problem_Dampener(report):
+    """Takes a report and checks if it is safe with any one item taken out"""
+
+    # Default to False - we want to prove it is safe
+    is_safe = False
+
+    for i in range(0,len(report)):
+        temp_report = report[:i] + report[i+1:]  # Builds a list by removing ith item
+        if Is_Safe(temp_report):
+            is_safe = True
+        print(temp_report, is_safe)
+    
+    return is_safe
+
+# Test
+print(Problem_Dampener([1,3,2,4,5]))  # True
+print(Problem_Dampener([8,6,4,4,1]))  # True
+
 safe_reports = []
 unsafe_reports = []
 
-for report in sorted_reports:
+for report in reports:  # Use original list, then need to sort both safe and unsafe lists after
     if Is_Safe(report):
         safe_reports.append(report)
     
@@ -169,5 +190,7 @@ print("\nPART 2 ANSWER")
 print("--------------")
 print(f"Number of reports: {len(reports)}")
 print(f"Number of safe reports: {len(safe_reports)}")
+print(f"unsafe reports: {safe_reports}")
 print(f"Number of unsafe reports: {len(unsafe_reports)}")
+print(f"unsafe reports: {unsafe_reports}")
 print("--------------")

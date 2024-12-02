@@ -58,11 +58,11 @@ test_data = """7 6 4 2 1
 """
 
 # Read and extract input data
-path = Path('input.txt')
+path = Path('Dec-02/input.txt')
 
 # Parse into a list of lines
-# lines = path.read_text().splitlines()
-lines = test_data.splitlines()
+lines = path.read_text().splitlines()
+# lines = test_data.splitlines()
 
 # Convert to lists of lints
 reports = []
@@ -73,7 +73,7 @@ for line in lines:
     reports.append(report)
 
 # Test - print first line
-print(reports)
+# print(reports)
 
 
 # Implement a function to determine if a line is sorted.
@@ -123,7 +123,7 @@ def Is_Safe(report):
     for i in range(0,len(report)-1):
         diff = abs(report[i], report[i+1])
 
-        if diff > 3:
+        if diff > 3 or diff == 0:  # == 0 removes cases of repeating numbers.
             is_safe = False
     
     return is_safe
@@ -140,4 +140,6 @@ for report in sorted_reports:
     if Is_Safe(report):
         number_of_safe_reports +=1
 
-print(f"Number of safe reports: {number_of_safe_reports}")
+print(f"\nLength of reports list: {len(reports)}")
+print(f"\nLength of sorted reports list: {len(sorted_reports)}")
+print(f"\nNumber of safe reports: {number_of_safe_reports}")

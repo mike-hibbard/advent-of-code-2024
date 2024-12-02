@@ -154,10 +154,20 @@ print("--------------")
 """
 PART 2 ANSWER
 """
-# Count instances of lists that are True.
-number_of_safe_reports = 0
+# Split out safe reports and unsafe reports
+safe_reports = []
+unsafe_reports = []
 
 for report in sorted_reports:
     if Is_Safe(report):
-        number_of_safe_reports +=1
+        safe_reports.append(report)
+    
+    else:
+        unsafe_reports.append(report)
 
+print("\nPART 2 ANSWER")
+print("--------------")
+print(f"Number of reports: {len(reports)}")
+print(f"Number of safe reports: {len(safe_reports)}")
+print(f"Number of unsafe reports: {len(unsafe_reports)}")
+print("--------------")

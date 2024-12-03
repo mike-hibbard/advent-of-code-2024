@@ -70,18 +70,31 @@ test_data2 = "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mu
 
 
 # Implement a regex that matches don't*do  
+# Use re.sub to replace matches with 'do' (in effect, removing the don't muls)
 def remove_dont_muls(input_text):
     return re.sub(r"don't(.)*do(?!n't)", "do", input_text)
 
 # Test
 print(test_data2)
-print(remove_dont_muls(test_data2))
+test_data2_donts_removed = remove_dont_muls(test_data2)
+print(test_data2_donts_removed)
 
-# Use re.sub to replace matches with 'do' (in effect, removing the don't muls)
+muls2 = (mul_regex(test_data2_donts_removed))
+
+tuples = []
+for mul in muls2:
+    tuples.append(tuple_regex(mul))
+
+print(tuples)
 
 # Re-run the sum of muls on the resulting string
+part_two_total = 0
+
+for tuple in tuples:
+    product = multiply(tuple)
+    part_two_total += product
 
 print("\nPART 2 ANSWER")
 print("--------------")
-print(f"Answer: {None}")
+print(f"Answer: {part_two_total}")
 print("--------------")

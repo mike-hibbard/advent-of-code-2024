@@ -64,9 +64,21 @@ print("--------------")
 
 
 """PART 2"""
+test_data2 = "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"
+
+# Test result = 48 (2*4 + 8*5)
+
 
 # Implement a regex that matches don't*do  
+def remove_dont_muls(input_text):
+    return re.sub(r"don't(.)*do(?!n't)", "do", input_text)
+
+# Test
+print(test_data2)
+print(remove_dont_muls(test_data2))
+
 # Use re.sub to replace matches with 'do' (in effect, removing the don't muls)
+
 # Re-run the sum of muls on the resulting string
 
 print("\nPART 2 ANSWER")

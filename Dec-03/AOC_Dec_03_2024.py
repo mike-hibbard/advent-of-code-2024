@@ -63,7 +63,11 @@ print(f"Answer: {part_one_total}")
 print("--------------")
 
 
+"""PART 2"""
 
+# Implement a regex that matches don't*do  
+# Use re.sub to replace matches with 'do' (in effect, removing the don't muls)
+# Re-run the sum of muls on the resulting string
 
 print("\nPART 2 ANSWER")
 print("--------------")

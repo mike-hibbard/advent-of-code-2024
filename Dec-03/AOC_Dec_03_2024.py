@@ -48,13 +48,16 @@ def multiply(tuple):
 # print(multiply((11, 8)))
 
 # Write a loop to call multiply and sum up a total
+part_one_total = 0
 
-
+for tuple in tuples:
+    product = multiply(tuple)
+    part_one_total += product
 
 
 print("\nPART 1 ANSWER")
 print("--------------")
-print(f"Answer: {None}")
+print(f"Answer: {part_one_total}")
 print("--------------")
 
 

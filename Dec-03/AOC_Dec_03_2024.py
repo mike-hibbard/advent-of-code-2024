@@ -20,13 +20,33 @@ def mul_regex(input_text):
     pattern = re.compile(r"mul\(\d{1,3},\d{1,3}\)")
     return pattern.findall(input_text)
 
-# Tests
-test_string = "mul(1,234)"
-print(mul_regex(test_string))
-print(mul_regex(test_data))
-
 # Parse input string, build a list of tuples (discard 'mul')
+# Create a regex to turn 'mul(x, y)' into a tuple (x, y)
+def tuple_regex(input_text):
+    pattern = re.compile(r'\d+')
+    factors = pattern.findall(input_text)
+    return (int(factors[0]), int(factors[1]))
+
+
+# Tests
+#test_string = "mul(1,234)"
+#test_tuple_string = '(11,8)'
+muls = (mul_regex(test_data))
+# print(muls)
+
+tuples = []
+for mul in muls:
+    tuples.append(tuple_regex(mul))
+
+print(tuples)
+
+
 # Write a multiply function that takes in a tuple as an arg
+def multiply(tuple):
+    return tuple[0] * tuple[1]
+
+# print(multiply((11, 8)))
+
 # Write a loop to call multiply and sum up a total
 
 

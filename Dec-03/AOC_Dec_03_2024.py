@@ -9,8 +9,8 @@ test_data = """xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul
 path = Path('input.txt')
 
 # Parse into a list of lines
-# lines = path.read_text().splitlines()
-lines = test_data.splitlines()
+lines = path.read_text()
+# lines = test_data
 # print(lines[0])
 
 """PART 1"""
@@ -31,8 +31,10 @@ def tuple_regex(input_text):
 # Tests
 #test_string = "mul(1,234)"
 #test_tuple_string = '(11,8)'
-muls = (mul_regex(test_data))
+# muls = (mul_regex(test_data))
 # print(muls)
+
+muls = (mul_regex(lines))
 
 tuples = []
 for mul in muls:

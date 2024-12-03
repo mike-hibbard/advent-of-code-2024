@@ -75,17 +75,20 @@ def remove_dont_muls(input_text):
     return re.sub(r"don't(.)*do(?!n't)", "do", input_text)
 
 # Test
+
 print(test_data2)
 test_data2_donts_removed = remove_dont_muls(test_data2)
 print(test_data2_donts_removed)
 
-muls2 = (mul_regex(test_data2_donts_removed))
+# muls2 = (mul_regex(test_data2_donts_removed))
+muls2 = (mul_regex(remove_dont_muls(lines)))
 
 tuples = []
 for mul in muls2:
     tuples.append(tuple_regex(mul))
 
-print(tuples)
+# print(tuples)
+
 
 # Re-run the sum of muls on the resulting string
 part_two_total = 0

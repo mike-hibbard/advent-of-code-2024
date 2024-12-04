@@ -1,4 +1,5 @@
 from pathlib import Path
+import numpy as np
 
 test_data = """MMMSXXMASM
 MSAMXMSMSA
@@ -23,11 +24,40 @@ path = Path('input.txt')
 lines = test_data.splitlines()
 # print(lines)
 
+
+
+
 """PART 1"""
+
+# Create a numpy array
+
+# Force the strings to lists
+data = []
+for line in lines:
+    data.append(list(line))
+#print(data)
+
+# Creat numpy array from the list of lists
+arr = np.array(data)
+print(f"arr = \n{arr}")
+
+"""
+Source:  https://stackoverflow.com/questions/6313308/get-all-the-diagonals-in-a-matrix-list-of-lists-in-python
+"""
+# Get the diagonals (NW -> SE)
+diags = [arr[::-1,:].diagonal(i) for i in range(-arr.shape[0]+1,arr.shape[1])]
+
+
+# Add the diagonals (NE -> SW)
+diags.extend(arr.diagonal(i) for i in range(arr.shape[1]-1,-arr.shape[0],-1))
+
+print("Diagonals:\n")
+for diag in diags:
+    print(diag.tolist())
 
 # Get horizontal text, store in a list
 horizontals = lines
-print(horizontals)
+print(f"Horizontals: \n{horizontals}")
 
 # Get vertical text, store in a list
 verticals = []
@@ -37,12 +67,15 @@ for i, horizontal in enumerate(horizontals):
     for j, item in enumerate(horizontal):
         vertical += horizontals[j][i]
     verticals.append(vertical)
-    print(vertical)
+    #print(vertical)
 
-# print(verticals)
+print(f"Verticals: \n{verticals}")
 
 
 # Get diagonal text, store in a list
+
+
+
 # Use regex FINDALL for 'XMAS' in string
 # Run regex 6 times (forwards and backwards on each list)
 # Count instances per list, sum up

@@ -39,7 +39,7 @@ for line in lines:
 
 # Creat numpy array from the list of lists
 arr = np.array(data)
-print(f"arr = \n{arr}")
+#print(f"arr = \n{arr}")
 
 """
 Source:  https://stackoverflow.com/questions/6313308/get-all-the-diagonals-in-a-matrix-list-of-lists-in-python
@@ -51,9 +51,14 @@ diags = [arr[::-1,:].diagonal(i) for i in range(-arr.shape[0]+1,arr.shape[1])]
 # Add the diagonals (NE -> SW)
 diags.extend(arr.diagonal(i) for i in range(arr.shape[1]-1,-arr.shape[0],-1))
 
-print("Diagonals:\n")
+# Get diagonal text, store in a list
+
+diagonals = []
 for diag in diags:
-    print(diag.tolist())
+    s = "".join(diag.tolist())
+    diagonals.append(s)
+
+print(f"Diagonals:\n {diagonals}")
 
 # Get horizontal text, store in a list
 horizontals = lines

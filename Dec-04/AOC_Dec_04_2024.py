@@ -1,5 +1,6 @@
 from pathlib import Path
 import numpy as np
+import re
 
 test_data = """MMMSXXMASM
 MSAMXMSMSA
@@ -76,19 +77,32 @@ for i, horizontal in enumerate(horizontals):
 
 print(f"Verticals: \n{verticals}")
 
-
-# Get diagonal text, store in a list
-
-
-
 # Use regex FINDALL for 'XMAS' in string
+pattern = re.compile(r'XMAS')
+
+# Make an uber list of all strings
+all_strings = []
+all_strings.extend(verticals)
+all_strings.extend(horizontals)
+all_strings.extend(diagonals)
+
+# print(all_strings)
+
+xmases = 0
+
+for string in all_strings:
+    xmases += len(pattern.findall(string))
+    xmases += len(pattern.findall((string[::-1]))) # Reverse string
+
+# print(xmases)
+
 # Run regex 6 times (forwards and backwards on each list)
 # Count instances per list, sum up
 
 
 print("\nPART 1 ANSWER")
 print("--------------")
-print(f"Answer: {None}")
+print(f"Answer: {xmases}")
 print("--------------")
 
 

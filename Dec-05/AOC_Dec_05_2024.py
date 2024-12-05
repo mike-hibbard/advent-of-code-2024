@@ -73,7 +73,7 @@ print(updates)
 #   - if any test is false, break the loop and pop the update from the list
 
 def Get_Rules_For_update(update, rules):
-    """checks if the list is conformant to the rules"""
+    """Gets the rules that apply to the update"""
 
     # Get relevant rules
     applicable_rules = []
@@ -84,10 +84,43 @@ def Get_Rules_For_update(update, rules):
                 applicable_rules.append(rule)
         
         print(f"item: {item}, rules: {applicable_rules}")
+
+    return(applicable_rules)
     
     
 # Test
-Get_Rules_For_update(updates[0], rules)
+#Get_Rules_For_update(updates[0], rules)
+
+
+def Is_Update_In_Order(update):
+    """Returns True if the order conforms to the rules"""
+
+    is_ordered = True
+
+    applicable_rules = Get_Rules_For_update(update, rules)
+
+    for index, item in enumerate(update):
+        
+        items_to_right = update[index:]
+
+        for rule in applicable_rules:
+            
+            # Handle vacuously true case
+            if rule[1] not in items_to_right:
+                continue
+            
+            # Error case; if this is false we know the update is not in order
+            if rule[0] == item and rule[1] not in items_to_right:
+                is_ordered = False
+                break
+    
+    print(is_ordered)
+    return(is_ordered)
+   
+
+Is_Update_In_Order(updates[0])
+
+
 
 # Once done get all 'middle' values and sum them up.
 

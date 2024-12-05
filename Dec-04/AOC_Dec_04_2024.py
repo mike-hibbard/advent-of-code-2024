@@ -21,8 +21,8 @@ path = Path('input.txt')
 
 
 # Parse into a list of lines
-# lines = path.read_text().splitlines()
-lines = test_data.splitlines()
+lines = path.read_text().splitlines()
+# lines = test_data.splitlines()
 # print(lines)
 
 

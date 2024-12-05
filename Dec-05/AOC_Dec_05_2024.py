@@ -71,6 +71,24 @@ print(updates)
 #   - assume the update is in correct order.
 #   - test each rule in turn - we need only test to the RHS.
 #   - if any test is false, break the loop and pop the update from the list
+
+def Get_Rules_For_update(update, rules):
+    """checks if the list is conformant to the rules"""
+
+    # Get relevant rules
+    applicable_rules = []
+
+    for item in update:
+        for rule in rules:
+            if item == rule[0]:
+                applicable_rules.append(rule)
+        
+        print(f"item: {item}, rules: {applicable_rules}")
+    
+    
+# Test
+Get_Rules_For_update(updates[0], rules)
+
 # Once done get all 'middle' values and sum them up.
 
 

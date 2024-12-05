@@ -23,7 +23,12 @@ test_rules = """47|53
 53|13
 """
 
-test_update = '75,47,61,53,29'
+test_updates = """75,47,61,53,29
+97,61,53,29,13
+75,29,13
+75,97,47,61,53
+61,13,29
+97,13,75,29,47"""
 
 #  Test Result:
 
@@ -34,6 +39,7 @@ path = Path('input.txt')
 # Parse into a list of lines
 # lines = path.read_text().splitlines()
 raw_rules = test_rules.splitlines()
+raw_updates = test_updates.splitlines()
 print(raw_rules)
 
 """PART 1"""
@@ -42,13 +48,23 @@ print(raw_rules)
 rules = []
 
 for rule in raw_rules:
-    rules.append((rule[:2],rule[3:5]))
+    rules.append((int(rule[:2]),int(rule[3:5])))
 
 print(rules)
 
 
 # Use the LH value in the rules dict as the key.
 # Store updates as a list of lists.
+updates = []
+
+for update in raw_updates:
+    raw_numbers = update.split(",")
+    numbers = []
+    for raw_number in raw_numbers:
+        numbers.append(int(raw_number))
+    updates.append(numbers)
+
+print(updates)
 # Store an update as a list.
 # Iterate over the list
 #   - first select the rules for the item in the list.

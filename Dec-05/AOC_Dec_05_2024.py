@@ -104,6 +104,9 @@ def Is_Update_In_Order(update):
         # Check rules L->R
         items_to_right = update[index:]
 
+        # Check rules R->L
+        items_to_left = update[0:index+1]
+
         for rule in applicable_rules:
             
             # Handle vacuously true case
@@ -114,14 +117,9 @@ def Is_Update_In_Order(update):
             if rule[0] == item and rule[1] not in items_to_right:
                 is_ordered = False
                 break
-    
-        # Check rules R->L
-        items_to_left = update[0:index+1]
-
-        for rule in applicable_rules:
 
             # Error case; if this is true we know the update is not in order
-            if rule[1] == item and rule[0] in items_to_left:
+            if rule[1] == item and rule[0] not in items_to_left:
                 is_ordered = False
                 break
 

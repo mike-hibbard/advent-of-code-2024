@@ -101,6 +101,7 @@ def Is_Update_In_Order(update):
 
     for index, item in enumerate(update):
         
+        # Check rules L->R
         items_to_right = update[index:]
 
         for rule in applicable_rules:
@@ -114,11 +115,23 @@ def Is_Update_In_Order(update):
                 is_ordered = False
                 break
     
+        # Check rules R->L
+        items_to_left = update[0:index+1]
+
+        for rule in applicable_rules:
+
+            # Error case; if this is true we know the update is not in order
+            if rule[1] == item and rule[0] in items_to_left:
+                is_ordered = False
+                break
+
+
     print(is_ordered)
     return(is_ordered)
    
 
 Is_Update_In_Order(updates[0])
+Is_Update_In_Order(updates[3])
 
 
 

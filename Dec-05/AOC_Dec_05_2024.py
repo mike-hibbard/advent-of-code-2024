@@ -128,20 +128,28 @@ def Is_Update_In_Order(update):
     return(is_ordered)
    
 
-Is_Update_In_Order(updates[0])
-Is_Update_In_Order(updates[3])
+# Collect valid updates
+valid_updates =[]
+
+for update in updates:
+    if Is_Update_In_Order(update):
+        valid_updates.append(update)
 
 
+print(f"Valid updates: {valid_updates}")
 
 # Once done get all 'middle' values and sum them up.
 
+sums = 0
 
-
+for valid_update in valid_updates:
+    middle = len(valid_update) // 2
+    sums += valid_update[middle]
 
 
 print("\nPART 1 ANSWER")
 print("--------------")
-print(f"Answer: {None}")
+print(f"Answer: {sums}")
 print("--------------")
 
 

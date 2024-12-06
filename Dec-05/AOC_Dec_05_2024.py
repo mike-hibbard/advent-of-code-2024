@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 test_rules = """47|53
 97|13
@@ -33,15 +34,21 @@ test_updates = """75,47,61,53,29
 #  Test Result:
 
 # Read and extract input data
-path = Path('input.txt')
-
+path = Path('Dec-05/input.txt')
 
 # Parse into a list of lines
-# lines = path.read_text().splitlines()
-raw_rules = test_rules.splitlines()
-raw_updates = test_updates.splitlines()
-print(raw_rules)
+#lines = path.read_text().splitlines()
+input_text = path.read_text()
 
+#extract rules
+
+#raw_rules = test_rules.splitlines()
+raw_rules = re.findall(r'[0-9]{2}\|[0-9]{2}', input_text)
+print(raw_rules[0])
+
+#extract updates
+raw_updates = re.findall(r'\d{2},\S*', input_text)
+print(raw_updates[0])
 """PART 1"""
 
 # Store rules in a data type that is easily referenced - list of tuples.
@@ -50,7 +57,7 @@ rules = []
 for rule in raw_rules:
     rules.append((int(rule[:2]),int(rule[3:5])))
 
-print(rules)
+#print(rules)
 
 
 # Use the LH value in the rules dict as the key.
@@ -64,7 +71,7 @@ for update in raw_updates:
         numbers.append(int(raw_number))
     updates.append(numbers)
 
-print(updates)
+#print(updates)
 # Store an update as a list.
 # Iterate over the list
 #   - first select the rules for the item in the list.
@@ -83,7 +90,7 @@ def Get_Rules_For_update(update, rules):
             if item == rule[0]:
                 applicable_rules.append(rule)
         
-        print(f"item: {item}, rules: {applicable_rules}")
+        #print(f"item: {item}, rules: {applicable_rules}")
 
     return(applicable_rules)
     
@@ -124,7 +131,7 @@ def Is_Update_In_Order(update):
                 break
 
 
-    print(is_ordered)
+    #print(is_ordered)
     return(is_ordered)
    
 

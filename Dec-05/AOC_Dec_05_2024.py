@@ -44,11 +44,11 @@ input_text = path.read_text()
 
 #raw_rules = test_rules.splitlines()
 raw_rules = re.findall(r'[0-9]{2}\|[0-9]{2}', input_text)
-print(raw_rules[0])
+#print(raw_rules[0])
 
 #extract updates
 raw_updates = re.findall(r'\d{2},\S*', input_text)
-print(raw_updates[0])
+#print(raw_updates[0])
 """PART 1"""
 
 # Store rules in a data type that is easily referenced - list of tuples.
@@ -59,8 +59,6 @@ for rule in raw_rules:
 
 #print(rules)
 
-
-# Use the LH value in the rules dict as the key.
 # Store updates as a list of lists.
 updates = []
 
@@ -71,13 +69,6 @@ for update in raw_updates:
         numbers.append(int(raw_number))
     updates.append(numbers)
 
-#print(updates)
-# Store an update as a list.
-# Iterate over the list
-#   - first select the rules for the item in the list.
-#   - assume the update is in correct order.
-#   - test each rule in turn - we need only test to the RHS.
-#   - if any test is false, break the loop and pop the update from the list
 
 def Get_Rules_For_update(update, rules):
     """Gets the rules that apply to the update"""

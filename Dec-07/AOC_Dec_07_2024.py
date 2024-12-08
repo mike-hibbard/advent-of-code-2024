@@ -1,4 +1,5 @@
 from pathlib import Path
+import itertools
 
 test_data = """190: 10 19
 3267: 81 40 27
@@ -38,6 +39,12 @@ print(calibrations)
 
 
 # Define a function that determines all possible combos of + and * for a tuple of terms
+# Source:  https://stackoverflow.com/questions/104420/how-do-i-generate-all-permutations-of-a-list
+print(list(itertools.permutations(['add', 'mult'], 6)))
+
+x = 190
+y = [19 * 10]
+print(x == y[0])
 
 # Define a function that takes a list of possible operator combos...and works applies them somehow?!
 

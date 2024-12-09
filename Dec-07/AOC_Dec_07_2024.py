@@ -1,5 +1,6 @@
 from pathlib import Path
 import itertools
+import math
 
 test_data = """190: 10 19
 3267: 81 40 27
@@ -33,18 +34,30 @@ for line in lines:
     terms_as_list = terms.split(" ")
     terms_as_list.pop(0)    # Get rid of leading space
     terms_as_ints = [int(x) for x in terms_as_list] # Convert to ints
-    calibrations.append((result, (terms_as_ints)))
+    calibrations.append((result, terms_as_ints))
 
 print(calibrations)
 
 
 # Define a function that determines all possible combos of + and * for a tuple of terms
-# Source:  https://stackoverflow.com/questions/104420/how-do-i-generate-all-permutations-of-a-list
-print(list(itertools.permutations(['add', 'mult'], 6)))
+# Use Cartesian Product for this
+# https://docs.python.org/3/library/itertools.html
 
-x = 190
-y = [19 * 10]
-print(x == y[0])
+def build_operators_list (list_length):
+    """Returns a list of all combinations of + and *, for a given list length."""
+
+    # We can represent '+' as 0 and '*' as 1
+    # print(list(itertools.product(range(2),repeat=6)))
+    combos = list(itertools.product(range(2),repeat=list_length))
+
+    return combos
+
+
+# Test
+print(build_operators_list(3))
+
+
+
 
 # Define a function that takes a list of possible operator combos...and works applies them somehow?!
 

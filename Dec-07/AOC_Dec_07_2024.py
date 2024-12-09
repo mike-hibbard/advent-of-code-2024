@@ -96,7 +96,8 @@ def build_expression(factors, operator_combo):
         string += str(factors[i])
         string += operator_combo[i]
     
-    print(string)
+    return string[:-1]   # Remove trailing space
+    #print(string)
 
 # Test
 build_expression([81, 40, 27], '+*')
@@ -111,7 +112,7 @@ def calculate_answers(factors):
 
 
     operator_combos = list(build_operators_list(len(factors)-1))
-    operator_combos += " " # Number of combos is 1 less than the number of factors
+    #operator_combos += " " # Number of combos is 1 less than the number of factors
 
     expressions = []
     
@@ -119,10 +120,15 @@ def calculate_answers(factors):
         expressions.append(build_expression(factors, operator_combos[i]))
     
     print(expressions)
+    return expressions
     
 
+
 # Test
-calculate_answers([81, 40, 27])
+answers = calculate_answers([81, 40, 27])
+for answer in answers:
+    print(f"{answer} = {eval(answers[0])}")
+
 
 
 print("\nPART 1 ANSWER")

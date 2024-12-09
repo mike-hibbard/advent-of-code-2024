@@ -72,10 +72,12 @@ def build_operators_list (list_length):
 # print(build_operators_list(2))
 
 # Use 'eval' to evaluate the string
+"""
 print(eval('10*19'))
 print(f"81+40*27 = {eval('81+40*27')}")
 print(f"81*40+27 = {eval('81*40+27')}")
 print(f"(81+40)*27 = {eval('(81+40)*27')}")
+"""
 
 """
 3267: 81 40 27 has two positions for operators. Of the four possible configurations of the operators, two cause the right side to match the test value: 81 + 40 * 27 and 81 * 40 + 27
@@ -115,20 +117,9 @@ def calculate_answers(factors):
     
     for i in range(len(factors)):
         expressions.append(build_expression(factors, operator_combos[i]))
-        #string += str(factors[i])
-        #string += operator_combos[i]
     
     print(expressions)
     
-    #print(string)
-
-    #for combo in operator_combos:
-    #    print(list(zip(factors,combo)))
-
-    
-
-    # print(list(zip(factors,operator_combos)))
-    # print(operator_combos)
 
 # Test
 calculate_answers([81, 40, 27])

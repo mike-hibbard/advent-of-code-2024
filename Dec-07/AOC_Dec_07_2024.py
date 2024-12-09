@@ -82,16 +82,48 @@ print(f"(81+40)*27 = {eval('(81+40)*27')}")
 """
 
 
+
+def build_expression(factors, operator_combo):
+    """Returns a string built from the factors + operators"""
+
+    operator_combo += " " # Number of combos is 1 less than the number of factors
+
+    string = ""
+    
+    for i in range(len(factors)):
+        string += str(factors[i])
+        string += operator_combo[i]
+    
+    print(string)
+
+# Test
+build_expression([81, 40, 27], '+*')
+
+# TODO add in parentheses
+
+
+
 # Define a function that takes a list of possible operator combos...and works applies them somehow?!
 def calculate_answers(factors):
     """Returns the list of possible answers for the factors"""
 
-    # Number of combos is 1 less than the number of factors
-    operator_combos = list(build_operators_list(len(factors)))
-    operator_combos += " "
 
-    for combo in operator_combos:
-        print(list(zip(factors,combo)))
+    operator_combos = list(build_operators_list(len(factors)-1))
+    operator_combos += " " # Number of combos is 1 less than the number of factors
+
+    expressions = []
+    
+    for i in range(len(factors)):
+        expressions.append(build_expression(factors, operator_combos[i]))
+        #string += str(factors[i])
+        #string += operator_combos[i]
+    
+    print(expressions)
+    
+    #print(string)
+
+    #for combo in operator_combos:
+    #    print(list(zip(factors,combo)))
 
     
 

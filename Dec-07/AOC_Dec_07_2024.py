@@ -87,7 +87,15 @@ def calculate_answers(factors):
     """Returns the list of possible answers for the factors"""
 
     # Number of combos is 1 less than the number of factors
-    operator_combos = build_operators_list(len(factors)-1)
+    operator_combos = list(build_operators_list(len(factors)))
+    operator_combos += " "
+
+    for combo in operator_combos:
+        print(list(zip(factors,combo)))
+
+    
+
+    # print(list(zip(factors,operator_combos)))
     # print(operator_combos)
 
 # Test

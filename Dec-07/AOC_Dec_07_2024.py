@@ -50,13 +50,36 @@ def build_operators_list (list_length):
     # print(list(itertools.product(range(2),repeat=6)))
     combos = list(itertools.product(range(2),repeat=list_length))
 
-    return combos
+    # Convert 0/1 to +/*
+    operator_combos = []
+
+    for combo in combos:
+
+        operator_combo = ""
+
+        for item in combo:
+            if item == 0:
+                operator_combo += '+'
+            elif item == 1:
+                operator_combo += '*'
+    
+        operator_combos.append(operator_combo)
+        
+    return operator_combos
 
 
 # Test
-print(build_operators_list(3))
+print(build_operators_list(2))
 
+# Use 'eval' to evaluate the string
+print(eval('10*19'))
+print(f"81+40*27 = {eval('81+40*27')}")
+print(f"81*40+27 = {eval('81*40+27')}")
+print(f"(81+40)*27 = {eval('(81+40)*27')}")
 
+"""
+3267: 81 40 27 has two positions for operators. Of the four possible configurations of the operators, two cause the right side to match the test value: 81 + 40 * 27 and 81 * 40 + 27
+"""
 
 
 # Define a function that takes a list of possible operator combos...and works applies them somehow?!

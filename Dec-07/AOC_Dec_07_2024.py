@@ -96,14 +96,17 @@ def build_expression(factors, operator_combo):
         string += str(factors[i])
         string += operator_combo[i]
     
-    return string[:-1]   # Remove trailing space
+    string =  string[:-1]   # Remove trailing space
+
+    #TODO Handle parentheses - only needed if both + and * present
+    #if '+' in string and '*' in string:
+        
+
+    return string   
     #print(string)
 
 # Test
 build_expression([81, 40, 27], '+*')
-
-# TODO add in parentheses
-
 
 
 # Define a function that takes a list of possible operator combos...and works applies them somehow?!

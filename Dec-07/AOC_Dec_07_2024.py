@@ -69,7 +69,7 @@ def build_operators_list (list_length):
 
 
 # Test
-print(build_operators_list(2))
+# print(build_operators_list(2))
 
 # Use 'eval' to evaluate the string
 print(eval('10*19'))
@@ -83,6 +83,15 @@ print(f"(81+40)*27 = {eval('(81+40)*27')}")
 
 
 # Define a function that takes a list of possible operator combos...and works applies them somehow?!
+def calculate_answers(factors):
+    """Returns the list of possible answers for the factors"""
+
+    # Number of combos is 1 less than the number of factors
+    operator_combos = build_operators_list(len(factors)-1)
+    # print(operator_combos)
+
+# Test
+calculate_answers([81, 40, 27])
 
 
 print("\nPART 1 ANSWER")

@@ -36,7 +36,8 @@ for line in lines:
     terms_as_ints = [int(x) for x in terms_as_list] # Convert to ints
     calibrations.append((result, terms_as_ints))
 
-print(calibrations)
+# Test
+# print(calibrations)
 
 
 # Define a function that determines all possible combos of + and * for a tuple of terms
@@ -106,7 +107,7 @@ def build_expression(factors, operator_combo):
     #print(string)
 
 # Test
-build_expression(lines[1][1], '+*')
+# build_expression(lines[1][1], '+*')
 
 
 # Define a function that takes a list of possible operator combos...and works applies them somehow?!
@@ -128,11 +129,32 @@ def calculate_answers(factors):
 
 
 # Test
+"""
 answers = calculate_answers([81, 40, 27])
 for answer in answers:
     print(f"{answer} = {eval(answer)}")
+"""
 
+# Define a function to take in a tuple, calc expressions and check if answer exists
+def check_answers(calibration):
+    """Returns true if the stated answer is found in the list of calculated answers"""
 
+    stated_answer = calibration[0] # Parse our the stated answer
+    factors = calibration[1]    # Parse out the factors
+    print(stated_answer)
+    print(factors)
+
+    expressions = calculate_answers(factors)
+    answers = [eval(expression) for expression in expressions]
+
+    if stated_answer in answers:
+        return True
+    
+    else:
+        return False
+
+# Test
+print(check_answers(calibrations[0]))
 
 print("\nPART 1 ANSWER")
 print("--------------")

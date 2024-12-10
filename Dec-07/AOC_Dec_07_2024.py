@@ -141,8 +141,8 @@ def check_answers(calibration):
 
     stated_answer = calibration[0] # Parse our the stated answer
     factors = calibration[1]    # Parse out the factors
-    print(stated_answer)
-    print(factors)
+    #print(stated_answer)
+    #print(factors)
 
     expressions = calculate_answers(factors)
     answers = [eval(expression) for expression in expressions]
@@ -154,7 +154,9 @@ def check_answers(calibration):
         return False
 
 # Test
-print(check_answers(calibrations[0]))
+print(f"{calibrations[0]}: {check_answers(calibrations[0])}")
+print(f"{calibrations[1]}: {check_answers(calibrations[1])}")
+print(f"{calibrations[2]}: {check_answers(calibrations[2])}")
 
 print("\nPART 1 ANSWER")
 print("--------------")

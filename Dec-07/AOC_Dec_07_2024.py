@@ -221,7 +221,7 @@ print(f"{calibrations[-1]}: {check_answers(calibrations[-1])}")
 
 
 # Sum up all 'True' answers
-"""
+
 true_calibrations_sum = 0
 
 for calibration in calibrations:
@@ -233,7 +233,7 @@ print("\nPART 1 ANSWER")
 print("--------------")
 print(f"Answer: {true_calibrations_sum}")
 print("--------------")
-"""
+
 
 
 print("\nPART 2 ANSWER")

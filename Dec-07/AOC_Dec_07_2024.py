@@ -21,8 +21,8 @@ path = Path('input.txt')
 
 
 # Parse into a list of lines
-# lines = path.read_text().splitlines()
-lines = test_data.splitlines()
+lines = path.read_text().splitlines()
+# lines = test_data.splitlines()
 #print(lines[0])
 
 """PART 1"""
@@ -131,7 +131,7 @@ def build_expression_as_list(factors, operator_combo):
     return expression_as_list   
 
 # Test
-build_expression_as_list(calibrations[1][1],'**')
+# build_expression_as_list(calibrations[1][1],'**')
 
 # Define a function that does eval L -> R
 def evaluate_expression_left_to_right(expression_as_list):

@@ -146,7 +146,7 @@ def evaluate_expression_left_to_right(expression_as_list):
             if total == 0:
                 total = eval(term)
             else:
-                total += eval(f'{total}{term}')
+                total = eval(f'{total}{term}')
             term = ""
         
         elif len(expression_as_list) == 0:

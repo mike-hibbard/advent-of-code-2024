@@ -1,6 +1,7 @@
 from pathlib import Path
 import itertools
 import math
+import re
 
 test_data = """190: 10 19
 3267: 81 40 27
@@ -110,6 +111,57 @@ def build_expression(factors, operator_combo):
 # build_expression(lines[1][1], '+*')
 
 
+def build_expression_as_list(factors, operator_combo):
+    """Returns a list built from the factors + operators"""
+
+    operator_combo += " " # Number of combos is 1 less than the number of factors
+
+    expression_as_list = []
+    
+    for i in range(len(factors)):
+        expression_as_list.append(str(factors[i]))
+        expression_as_list.append(operator_combo[i])
+    
+    expression_as_list.pop()  # Remove trailing space
+
+    #TODO Handle parentheses - only needed if both + and * present
+    #if '+' in string and '*' in string:
+        
+    print(expression_as_list)
+    return expression_as_list   
+
+# Test
+build_expression_as_list(calibrations[1][1],'**')
+
+# Define a function that does eval L -> R
+def evaluate_expression_left_to_right(expression_as_list):
+    """Returns the answer of the expression with left-to-right calcuation"""
+
+    total = 0
+    term = ""
+
+    while len(expression_as_list) >= 0:
+        term_pattern = re.compile(r"[0-9]*[+*]{1}[0-9]+")
+        if re.match(term_pattern, term):
+            if total == 0:
+                total = eval(term)
+            else:
+                total += eval(f'{total}{term}')
+            term = ""
+        
+        elif len(expression_as_list) == 0:
+            break
+        
+        else:
+            term += expression_as_list.pop(0)
+
+    print(total)
+
+# Test
+evaluate_expression_left_to_right(['81', '*', '40', '*', '27'])
+evaluate_expression_left_to_right(['11', '+', '6', '*', '16', '+', '20'])
+
+
 # Define a function that takes a list of possible operator combos...and works applies them somehow?!
 def calculate_answers(factors):
     """Returns the list of possible answers for the factors"""
@@ -135,7 +187,6 @@ for answer in answers:
     print(f"{answer} = {eval(answer)}")
 """
 
-# TODO FIX BUG HERE; FOR CASE 292, THIS ONLY DOES FIRST FOUR EXPRESSIONS...
 # Define a function to take in a tuple, calc expressions and check if answer exists
 def check_answers(calibration):
     """Returns true if the stated answer is found in the list of calculated answers"""
@@ -158,6 +209,7 @@ def check_answers(calibration):
 #print(f"{calibrations[0]}: {check_answers(calibrations[0])}")
 #print(f"{calibrations[1]}: {check_answers(calibrations[1])}")
 print(f"{calibrations[-1]}: {check_answers(calibrations[-1])}")
+
 
 # Sum up all 'True' answers
 """

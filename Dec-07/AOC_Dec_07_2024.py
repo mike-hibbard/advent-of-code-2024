@@ -120,7 +120,7 @@ def calculate_answers(factors):
 
     expressions = []
     
-    for i in range(len(factors)):
+    for i in range(len(operator_combos)):
         expressions.append(build_expression(factors, operator_combos[i]))
     
     print(expressions)
@@ -135,6 +135,7 @@ for answer in answers:
     print(f"{answer} = {eval(answer)}")
 """
 
+# TODO FIX BUG HERE; FOR CASE 292, THIS ONLY DOES FIRST FOUR EXPRESSIONS...
 # Define a function to take in a tuple, calc expressions and check if answer exists
 def check_answers(calibration):
     """Returns true if the stated answer is found in the list of calculated answers"""
@@ -154,15 +155,24 @@ def check_answers(calibration):
         return False
 
 # Test
-print(f"{calibrations[0]}: {check_answers(calibrations[0])}")
-print(f"{calibrations[1]}: {check_answers(calibrations[1])}")
-print(f"{calibrations[2]}: {check_answers(calibrations[2])}")
+#print(f"{calibrations[0]}: {check_answers(calibrations[0])}")
+#print(f"{calibrations[1]}: {check_answers(calibrations[1])}")
+print(f"{calibrations[-1]}: {check_answers(calibrations[-1])}")
+
+# Sum up all 'True' answers
+"""
+true_calibrations_sum = 0
+
+for calibration in calibrations:
+    if check_answers(calibration):
+        true_calibrations_sum += calibration[0]
+
 
 print("\nPART 1 ANSWER")
 print("--------------")
-print(f"Answer: {None}")
+print(f"Answer: {true_calibrations_sum}")
 print("--------------")
-
+"""
 
 
 print("\nPART 2 ANSWER")

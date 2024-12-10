@@ -156,6 +156,7 @@ def evaluate_expression_left_to_right(expression_as_list):
             term += expression_as_list.pop(0)
 
     print(total)
+    return(total)
 
 # Test
 evaluate_expression_left_to_right(['81', '*', '40', '*', '27'])
@@ -164,12 +165,13 @@ evaluate_expression_left_to_right(['11', '+', '6', '*', '16', '+', '20'])
 
 # Define a function that takes a list of possible operator combos...and works applies them somehow?!
 def calculate_answers(factors):
-    """Returns the list of possible answers for the factors"""
+    # Returns the list of possible answers for the factors
 
 
     operator_combos = list(build_operators_list(len(factors)-1))
     #operator_combos += " " # Number of combos is 1 less than the number of factors
 
+    """
     expressions = []
     
     for i in range(len(operator_combos)):
@@ -177,8 +179,13 @@ def calculate_answers(factors):
     
     print(expressions)
     return expressions
-    
+    """
+    expressions_as_list = []
 
+    for i in range(len(operator_combos)):
+        expressions_as_list.append(build_expression_as_list(factors, operator_combos[i]))
+
+    return(expressions_as_list)
 
 # Test
 """
@@ -197,7 +204,9 @@ def check_answers(calibration):
     #print(factors)
 
     expressions = calculate_answers(factors)
-    answers = [eval(expression) for expression in expressions]
+    answers = []
+    for expression in expressions:
+        answers.append(evaluate_expression_left_to_right(expression))
 
     if stated_answer in answers:
         return True

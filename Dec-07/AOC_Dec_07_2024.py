@@ -106,7 +106,7 @@ def build_expression(factors, operator_combo):
     #print(string)
 
 # Test
-build_expression([81, 40, 27], '+*')
+build_expression(lines[1][1], '+*')
 
 
 # Define a function that takes a list of possible operator combos...and works applies them somehow?!
@@ -130,7 +130,7 @@ def calculate_answers(factors):
 # Test
 answers = calculate_answers([81, 40, 27])
 for answer in answers:
-    print(f"{answer} = {eval(answers[0])}")
+    print(f"{answer} = {eval(answer)}")
 
 
 

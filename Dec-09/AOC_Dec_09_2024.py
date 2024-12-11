@@ -40,10 +40,57 @@ def generate_disk_blocks(disk_map):
             counter -= 1
 
     print(disk)
+    return(disk)
 
-generate_disk_blocks('12345')        
+# Test
+# generate_disk_blocks('12345')       
+# generate_disk_blocks(test_data) 
+
+
 
 # Run amphipod to move blocks left into free spaces
+
+def find_next_free_block(disk):
+    """Takes in a disk and returns the index of the first occurence of '.'"""
+
+    not_found = True
+
+    next_free_block_index = 0
+
+    while not_found:
+
+        if (disk[next_free_block_index]) == '.':
+            not_found = False
+
+        else:
+            next_free_block_index += 1
+
+
+    return next_free_block_index
+
+
+# Test
+#print(find_next_free_block([0, '.', '.', 1, 1, 1, '.', '.', '.', '.', 2, 2, 2, 2, 2]))
+#print(find_next_free_block(['.', '.', 1, 1, 1, '.', '.', '.', '.', 2, 2, 2, 2, 2]))
+#print(find_next_free_block([1, 1, 1, '.', '.', '.', '.', 2, 2, 2, 2, 2]))
+
+
+def run_amphipod(disk):
+    """Fills empty spaces on left starting with righter-most disk blocks"""
+
+    # A counter to find and store the next free space
+
+    # A while loop to pop() and push() from the end of the list
+
+    """
+      Pseudo code:
+        pop last item
+        if last item == '.' then continue
+        else if last item in [0-9] update list with item at next free counter.
+      
+    """
+
+
 
 # Calculate checksum
 

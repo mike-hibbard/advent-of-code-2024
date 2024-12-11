@@ -130,20 +130,21 @@ def walk(grid, start_position, direction='N'):
                 direction = get_next_direction(direction)
 
             else:
+                grid[current_position[0]][current_position[1]] = 'X'
                 current_position = take_step(current_position[0], current_position[1], direction)
-                print(grid[current_position[0]][current_position[1]])
+                #print_grid(grid)
+                #print(grid[current_position[0]][current_position[1]])
         except:
             IndexError
             print("Edge of map.")
             break
+    
+    return(grid)
+    
 
 # Test
-walk(grid, find_start_position(grid))
+print_grid(walk(grid, find_start_position(grid)))
 
-
-# Get direction
-
-# Logic to write X in prior space after every move
 
 
 print("\nPART 1 ANSWER")

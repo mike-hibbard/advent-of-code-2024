@@ -9,8 +9,8 @@ path = Path('input.txt')
 
 
 # Parse into a list of lines
-# lines = path.read_text().splitlines()
-lines = test_data.splitlines()
+lines = path.read_text()
+# lines = test_data.splitlines()
 # print(lines[0])
 
 """PART 1"""
@@ -39,7 +39,7 @@ def generate_disk_blocks(disk_map):
             disk.append(symbol)
             counter -= 1
 
-    print(disk)
+    #print(disk)
     return(disk)
 
 # Test
@@ -92,10 +92,10 @@ def run_amphipod(disk):
     # A while loop to pop() and push() from the end of the list
 
     disk_optimized = False
-
+    print(disk)
     while not disk_optimized:
         block = disk.pop()
-
+        #print(disk)
         # Find index of first available 
         try:
             next_free_block = next((index for index, item in enumerate(disk) if item == '.'))
@@ -112,16 +112,17 @@ def run_amphipod(disk):
         if '.' not in disk:
             disk_optimized = True
 
+    print(disk)
     return(disk)
             
 # Test
 #disk_map = '12345'
-disk_map = test_data
-print(disk_map)
-disk = generate_disk_blocks(disk_map)
-print(disk)
-optimized_disk = run_amphipod(disk)
-print(optimized_disk)
+##disk_map = test_data
+#print(disk_map)
+#disk = generate_disk_blocks(disk_map)
+#print(disk)
+#optimized_disk = run_amphipod(disk)
+#print(optimized_disk)
 
 
 # Calculate checksum
@@ -136,8 +137,11 @@ def calculate_checksum(optimized_disk):
     return checksum
 
 # Test
-checksum = calculate_checksum(optimized_disk)
-print(checksum)
+#checksum = calculate_checksum(optimized_disk)
+#print(checksum)
+
+# Part 1 Calcs
+checksum = calculate_checksum(run_amphipod(generate_disk_blocks(lines)))
 
 print("\nPART 1 ANSWER")
 print("--------------")

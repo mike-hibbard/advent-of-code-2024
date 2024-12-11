@@ -125,10 +125,23 @@ print(optimized_disk)
 
 
 # Calculate checksum
+def calculate_checksum(optimized_disk):
+    """Calcs the checksum of a disk that has been optimized"""
+
+    checksum = 0
+
+    for index, block_size in enumerate(optimized_disk):
+        checksum += index * block_size
+    
+    return checksum
+
+# Test
+checksum = calculate_checksum(optimized_disk)
+print(checksum)
 
 print("\nPART 1 ANSWER")
 print("--------------")
-print(f"Answer: {None}")
+print(f"Answer: {checksum}")
 print("--------------")
 
 

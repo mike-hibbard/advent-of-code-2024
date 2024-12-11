@@ -52,7 +52,7 @@ def find_start_position(grid):
 
     return (start_row, start_col)
 
-print(f"start position: {find_start_position(grid)}")
+# print(f"start position: {find_start_position(grid)}")
 
 def take_step(row, col, direction):
 
@@ -108,6 +108,26 @@ def get_next_direction(direction):
     
 
 # Start walking
+def walk(grid, start_position, direction='N'):
+
+    direction = direction
+
+    current_position = (start_position[0],start_position[1])
+
+    print(grid[current_position[0]][current_position[1]])
+
+    while True:
+        if obstacle_found(grid, current_position[0], current_position[1], direction):
+            print('OBSTACLE!')
+            direction = get_next_direction(direction)
+
+        else:
+            current_position = take_step(current_position[0], current_position[1], direction)
+            print(grid[current_position[0]][current_position[1]])
+
+# Test
+walk(grid, find_start_position(grid))
+
 
 # Get direction
 

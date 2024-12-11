@@ -97,10 +97,16 @@ def run_amphipod(disk):
         block = disk.pop()
 
         # Find index of first available 
-        next_free_block = next((index for index, item in enumerate(disk) if item == '.'))
-
-        # Replace free block with block
-        disk[next_free_block] = block
+        try:
+            next_free_block = next((index for index, item in enumerate(disk) if item == '.'))
+        
+        except:
+            StopIteration
+            disk_optimized = True
+        
+        else:
+            # Replace free block with block
+            disk[next_free_block] = block
 
         # Check if list contains any more spare blocks, break if none found
         if '.' not in disk:

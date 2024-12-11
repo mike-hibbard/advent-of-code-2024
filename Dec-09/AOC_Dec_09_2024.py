@@ -84,21 +84,37 @@ def run_amphipod(disk):
     """Fills empty spaces on left starting with righter-most disk blocks"""
 
     # A counter to find and store the next free space
-    next_free_block = next_free_block + find_next_free_block(disk) 
+    #next_free_block = next_free_block + find_next_free_block(disk) 
 
-    # A variable
+    # A variable to build output
+    # optimized_disk = optimized_disk.append(disk) # initialise to == disk
 
     # A while loop to pop() and push() from the end of the list
 
+    disk_optimized = False
 
-    """
-      Pseudo code:
-        pop last item
-        if last item == '.' then continue
-        else if last item in [0-9] update list with item at next free counter.
-      
-    """
+    while not disk_optimized:
+        block = disk.pop()
 
+        # Find index of first available 
+        next_free_block = next((index for index, item in enumerate(disk) if item == '.'))
+
+        # Replace free block with block
+        disk[next_free_block] = block
+
+        # Check if list contains any more spare blocks, break if none found
+        if '.' not in disk:
+            disk_optimized = True
+
+    return(disk)
+            
+# Test
+disk_map = '12345'
+print(disk_map)
+disk = generate_disk_blocks(disk_map)
+print(disk)
+optimized_disk = run_amphipod(disk)
+print(optimized_disk)
 
 
 # Calculate checksum

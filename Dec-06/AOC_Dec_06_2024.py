@@ -73,23 +73,30 @@ def take_step(row, col, direction):
 
 # Identify blocks
 def obstacle_found(grid, row, col, direction):
-    if direction == 'E':
-        if grid[row][col+1] == '#':
-            return True
 
-    if direction == 'W':
-        if grid[row][col-1] == '#':
-            return True
+    try:    
+        if direction == 'E':
+            if grid[row][col+1] == '#':
+                return True
 
-    if direction == 'S':
-        if grid[row+1][col] == '#':
-            return True
-    
-    if direction == 'N':
-        if grid[row-1][col] == '#':
-            return True
-    
-    else:
+        if direction == 'W':
+            if grid[row][col-1] == '#':
+                return True
+
+        if direction == 'S':
+            if grid[row+1][col] == '#':
+                return True
+        
+        if direction == 'N':
+            if grid[row-1][col] == '#':
+                return True
+        
+        else:
+            return False
+        
+    except:
+        IndexError
+        print("Edge of map.")
         return False
 
 # Logic to turn right
@@ -117,13 +124,18 @@ def walk(grid, start_position, direction='N'):
     print(grid[current_position[0]][current_position[1]])
 
     while True:
-        if obstacle_found(grid, current_position[0], current_position[1], direction):
-            print('OBSTACLE!')
-            direction = get_next_direction(direction)
+        try:
+            if obstacle_found(grid, current_position[0], current_position[1], direction):
+                print('OBSTACLE!')
+                direction = get_next_direction(direction)
 
-        else:
-            current_position = take_step(current_position[0], current_position[1], direction)
-            print(grid[current_position[0]][current_position[1]])
+            else:
+                current_position = take_step(current_position[0], current_position[1], direction)
+                print(grid[current_position[0]][current_position[1]])
+        except:
+            IndexError
+            print("Edge of map.")
+            break
 
 # Test
 walk(grid, find_start_position(grid))

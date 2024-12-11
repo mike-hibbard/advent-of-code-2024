@@ -59,6 +59,10 @@ def find_next_free_block(disk):
 
     while not_found:
 
+        if '.' not in disk:
+            next_free_block_index = -1   # Handle case of no free blocks
+            break
+
         if (disk[next_free_block_index]) == '.':
             not_found = False
 
@@ -73,14 +77,19 @@ def find_next_free_block(disk):
 #print(find_next_free_block([0, '.', '.', 1, 1, 1, '.', '.', '.', '.', 2, 2, 2, 2, 2]))
 #print(find_next_free_block(['.', '.', 1, 1, 1, '.', '.', '.', '.', 2, 2, 2, 2, 2]))
 #print(find_next_free_block([1, 1, 1, '.', '.', '.', '.', 2, 2, 2, 2, 2]))
+#print(find_next_free_block([1, 1, 1, 2, 2, 2, 2, 2]))
 
 
 def run_amphipod(disk):
     """Fills empty spaces on left starting with righter-most disk blocks"""
 
     # A counter to find and store the next free space
+    next_free_block = next_free_block + find_next_free_block(disk) 
+
+    # A variable
 
     # A while loop to pop() and push() from the end of the list
+
 
     """
       Pseudo code:

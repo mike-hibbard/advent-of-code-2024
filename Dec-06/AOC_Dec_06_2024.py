@@ -96,7 +96,7 @@ def obstacle_found(grid, row, col, direction):
         
     except:
         IndexError
-        print("Edge of map.")
+        #print("Edge of map.")
         return False
 
 # Logic to turn right
@@ -126,7 +126,7 @@ def walk(grid, start_position, direction='N'):
     while True:
         try:
             if obstacle_found(grid, current_position[0], current_position[1], direction):
-                print('OBSTACLE!')
+                #print('OBSTACLE!')
                 direction = get_next_direction(direction)
 
             else:
@@ -136,20 +136,33 @@ def walk(grid, start_position, direction='N'):
                 #print(grid[current_position[0]][current_position[1]])
         except:
             IndexError
-            print("Edge of map.")
+            #print("Edge of map.")
             break
     
     return(grid)
     
 
 # Test
-print_grid(walk(grid, find_start_position(grid)))
+mapped_walk = walk(grid, find_start_position(grid))
+print_grid(mapped_walk)
+
+# Count Xs
+rows = []
+for row in mapped_walk:
+    rows.extend(row)
+
+xs = 0
+for cell in rows:
+    if cell == 'X':
+        xs +=1
+
+# print(rows)
 
 
 
 print("\nPART 1 ANSWER")
 print("--------------")
-print(f"Answer: {None}")
+print(f"Answer: {xs}")
 print("--------------")
 
 

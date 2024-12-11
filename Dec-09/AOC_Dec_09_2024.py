@@ -115,7 +115,8 @@ def run_amphipod(disk):
     return(disk)
             
 # Test
-disk_map = '12345'
+#disk_map = '12345'
+disk_map = test_data
 print(disk_map)
 disk = generate_disk_blocks(disk_map)
 print(disk)

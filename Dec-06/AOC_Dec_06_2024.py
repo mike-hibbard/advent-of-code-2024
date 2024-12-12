@@ -1,4 +1,5 @@
 from pathlib import Path
+import time
 
 test_data = """....#.....
 .........#
@@ -96,7 +97,7 @@ def obstacle_found(grid, row, col, direction):
         
     except:
         IndexError
-        #print("Edge of map.")
+        print("Error")
         return False
 
 # Logic to turn right
@@ -132,7 +133,9 @@ def walk(grid, start_position, direction='N'):
             else:
                 grid[current_position[0]][current_position[1]] = 'X'
                 current_position = take_step(current_position[0], current_position[1], direction)
-                #print_grid(grid)
+                
+                print_grid(grid)
+                time.sleep(1)
                 #print(grid[current_position[0]][current_position[1]])
         except:
             IndexError
